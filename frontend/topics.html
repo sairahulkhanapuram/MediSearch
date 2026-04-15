@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Topics - MediSearch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand-bar">
+      <a class="logo-button" href="index.html" aria-label="MediSearch home">
+        <span class="logo-icon">❤️</span>
+        <div>
+          <h1>MediSearch</h1>
+          <p>First Aid Awareness</p>
+        </div>
+      </a>
+    </div>
+    <nav class="navbar-menu">
+      <a href="index.html">Home</a>
+      <a href="topics.html">Topics</a>
+      <a href="emergency.html">Emergency</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">Knowledge hub</span>
+        <h2>First aid topics in one scrollable view</h2>
+        <p>Search, filter, and open structured first aid guidance in a smooth modal overlay.</p>
+      </div>
+      <div class="hero-panel">
+        <div class="search-card">
+          <label for="searchInput">Search topics</label>
+          <div class="search-input">
+            <span class="search-icon">🔎</span>
+            <input id="searchInput" type="search" placeholder="Search by topic, symptom, or category" />
+          </div>
+        </div>
+        <div class="filter-card">
+          <label for="categoryFilter">Category filter</label>
+          <select id="categoryFilter">
+            <option value="All">All Categories</option>
+            <option value="Critical">Critical Emergencies</option>
+            <option value="Injury">Injury & Trauma</option>
+            <option value="Medical">Medical Conditions</option>
+            <option value="Environmental">Environmental</option>
+            <option value="Daily">Daily Accidents</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="breadcrumb-row">
+      <div class="breadcrumbs">
+        <span>Home</span>
+        <span class="breadcrumb-separator">›</span>
+        <span>Topics</span>
+      </div>
+      <div class="breadcrumb-note">Click a topic card to open the modal overlay.</div>
+    </section>
+
+    <section class="dashboard-grid">
+      <section class="topics-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">Topic Library</span>
+            <h3>Learn first aid without leaving the page</h3>
+          </div>
+          <div class="result-marker" id="resultMarker">0 topics</div>
+        </div>
+        <div class="cards-grid" id="topicCards"></div>
+        <div class="no-results hidden" id="noResults">
+          <h4>No results found</h4>
+          <p>Try another search term or select a different category.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    ↑
+  </button>
+
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal" aria-label="Close topic modal">✕</button>
+      <div class="modal-loader" id="modalLoader">
+        <div class="spinner"></div>
+        <p>Loading topic...</p>
+      </div>
+      <div class="modal-content hidden" id="modalContent">
+        <div class="modal-breadcrumbs" id="modalBreadcrumbs">Home <span class="breadcrumb-separator">›</span> Topics</div>
+        <div class="modal-top">
+          <span class="modal-icon" id="modalIcon">⚕️</span>
+          <div>
+            <p class="modal-category" id="modalCategory">Category</p>
+            <h2 id="modalTitle">Topic Title</h2>
+          </div>
+        </div>
+        <p class="modal-description" id="modalDescription">Topic summary and awareness guidance.</p>
+        <div class="modal-details-grid">
+          <div class="modal-section">
+            <h4>Symptoms / Signs</h4>
+            <ul id="modalSymptoms"></ul>
+          </div>
+          <div class="modal-section">
+            <h4>Step-by-step first aid</h4>
+            <ol id="modalSteps"></ol>
+          </div>
+          <div class="modal-section">
+            <h4>Precautions</h4>
+            <ul id="modalPrecautions"></ul>
+          </div>
+          <div class="modal-section">
+            <h4>What NOT to do ❌</h4>
+            <ul id="modalNotToDo"></ul>
+          </div>
+          <div class="modal-section">
+            <h4>When to seek help ⚠</h4>
+            <ul id="modalSeekHelp"></ul>
+          </div>
+          <div class="modal-tip">
+            <h4>Emergency Tip 🚨</h4>
+            <p id="modalTip"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

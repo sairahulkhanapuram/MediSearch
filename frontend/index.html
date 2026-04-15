@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>First Aid Awareness Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+    <p>Preparing your first aid experience...</p>
+  </div>
+
+  <header class="navbar">
+    <div class="brand-bar">
+      <button class="logo-button" aria-label="MediSearch logo">
+        <span class="logo-icon">❤️</span>
+        <div>
+          <h1>MediSearch</h1>
+          <p>First Aid Awareness</p>
+        </div>
+      </button>
+    </div>
+
+    <nav class="navbar-menu">
+      <a href="#home">Home</a>
+      <a href="#topics">Topics</a>
+      <a href="#emergency">Emergency</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="toggle-icon">🌙</span>
+      <span>Dark</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">Healthcare readiness</span>
+        <h2>Be Prepared. Save Lives.</h2>
+        <p>Explore easy first aid guidance, stay calm during emergencies, and build awareness for everyday care.</p>
+      </div>
+
+      <div class="hero-panel">
+        <div class="search-card">
+          <label for="searchInput">Search first aid topics</label>
+          <div class="search-input">
+            <span class="search-icon">🔎</span>
+            <input id="searchInput" type="search" placeholder="Search topics by name or symptom" />
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <label for="categoryFilter">Category filter</label>
+          <select id="categoryFilter">
+            <option value="All">All Categories</option>
+            <option value="Critical">Critical Emergencies</option>
+            <option value="Trauma">Trauma</option>
+            <option value="Medical">Medical Conditions</option>
+            <option value="Environmental">Environmental</option>
+          </select>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <p>Progress tracker</p>
+            <strong id="learnedCount">0</strong>
+            <span>topics reviewed</span>
+          </div>
+          <div>
+            <p>Favorites saved</p>
+            <strong id="favoriteCount">0</strong>
+            <span>topics saved</span>
+          </div>
+          <span class="badge badge-accent">Portfolio Ready</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="breadcrumb-row">
+      <div class="breadcrumbs">
+        <span>Home</span>
+        <span class="breadcrumb-separator">›</span>
+        <span>Topics</span>
+      </div>
+      <div class="breadcrumb-note">Build awareness for real-world emergencies.</div>
+    </section>
+
+    <section class="dashboard-grid">
+      <section class="topics-panel" id="topics">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">Topic Library</span>
+            <h3>Choose a topic to learn simple first aid steps</h3>
+          </div>
+          <div class="result-marker" id="resultMarker">0 topics</div>
+        </div>
+
+        <div class="cards-grid" id="topicCards"></div>
+        <div class="no-results hidden" id="noResults">
+          <h4>No results found</h4>
+          <p>Try a different search term or adjust the category filter.</p>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="sidebar-card scenario-card">
+          <div class="card-header">
+            <h3>What happened?</h3>
+            <span class="badge badge-primary">Scenario</span>
+          </div>
+          <div class="scenario-options" id="scenarioOptions"></div>
+          <div class="scenario-result hidden" id="scenarioResult">
+            <h4 id="scenarioTitle"></h4>
+            <p id="scenarioMessage"></p>
+            <div class="decision-flow hidden" id="decisionFlow">
+              <p id="decisionQuestion"></p>
+              <div class="decision-actions">
+                <button class="outline-button" data-answer="yes">Yes</button>
+                <button class="outline-button" data-answer="no">No</button>
+              </div>
+            </div>
+            <ul class="scenario-steps" id="scenarioSteps"></ul>
+          </div>
+        </div>
+
+        <div class="sidebar-card emergency-card" id="emergency">
+          <div class="card-header">
+            <h3>Emergency Help</h3>
+            <span class="badge badge-danger">108</span>
+          </div>
+          <p class="emergency-text">Stay calm and call for help immediately if the person is in danger.</p>
+          <a class="emergency-button" href="tel:108">Call Ambulance</a>
+          <button class="emergency-action" id="emergencyActionBtn" type="button">Show emergency tips</button>
+          <div class="emergency-panel hidden" id="emergencyPanel">
+            <p><strong>Ambulance:</strong> 108</p>
+            <ul>
+              <li>Stay calm and keep the scene safe.</li>
+              <li>Call emergency services immediately.</li>
+              <li>Give clear location and condition details.</li>
+              <li>Follow simple safety steps while waiting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-card tips-card">
+          <h3>Quick Tips</h3>
+          <ul>
+            <li>Keep the scene safe before offering help.</li>
+            <li>Talk calmly and reassure the person.</li>
+            <li>Use clean dressings and avoid touching wounds unnecessarily.</li>
+            <li>Always seek professional care for serious concerns.</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card review-card">
+          <div class="card-header">
+            <h3>Recently viewed</h3>
+            <span class="badge badge-soft">Latest</span>
+          </div>
+          <ul class="recent-list" id="recentList"></ul>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="page-footer" id="about">
+    <div>
+      <p>This application is for awareness purposes only and not a substitute for professional medical advice.</p>
+      <p>Follow guidelines from trusted organizations such as WHO and Indian Red Cross Society.</p>
+    </div>
+  </footer>
+
+  <button class="fixed-emergency-button" id="fixedEmergencyButton">Emergency Help 🚨</button>
+  <div class="fixed-emergency-panel hidden" id="fixedEmergencyPanel">
+    <h3>Emergency Help</h3>
+    <p><strong>Ambulance:</strong> 108</p>
+    <ul>
+      <li>Stay calm</li>
+      <li>Call emergency</li>
+      <li>Follow instructions</li>
+    </ul>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    ↑
+  </button>
+
+  <div class="modal-overlay" id="detailModal" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal" aria-label="Close detail view">✕</button>
+      <div class="modal-breadcrumbs" id="modalBreadcrumbs">Home <span class="breadcrumb-separator">›</span> Topics</div>
+      <div class="modal-loader hidden" id="modalLoader">
+        <div class="spinner"></div>
+        <p>Loading topic details...</p>
+      </div>
+      <div class="modal-content" id="modalContent">
+        <div class="modal-top">
+          <span class="modal-icon" id="modalIcon">⚕️</span>
+          <div>
+            <p class="modal-category" id="modalCategory">Category</p>
+            <h2 id="modalTitle">Topic Title</h2>
+          </div>
+        </div>
+        <p class="modal-description" id="modalDescription">Topic summary and awareness guidance.</p>
+      <div class="modal-details-grid">
+        <div class="modal-section">
+          <h4>Symptoms / Signs</h4>
+          <ul id="modalSymptoms"></ul>
+        </div>
+        <div class="modal-section">
+          <h4>Step-by-step first aid</h4>
+          <ol id="modalSteps"></ol>
+        </div>
+        <div class="modal-section">
+          <h4>Precautions</h4>
+          <ul id="modalPrecautions"></ul>
+        </div>
+        <div class="modal-section">
+          <h4>What NOT to do ❌</h4>
+          <ul id="modalNotToDo"></ul>
+        </div>
+        <div class="modal-section">
+          <h4>When to seek medical help ⚠</h4>
+          <ul id="modalSeekHelp"></ul>
+        </div>
+        <div class="modal-tip">
+          <h4>Emergency Tip 🚨</h4>
+          <p id="modalTip"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
